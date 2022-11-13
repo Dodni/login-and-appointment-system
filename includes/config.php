@@ -1,4 +1,21 @@
 <?php
+
+//ONLINE
+/*
+  define('HOST', 'localhost');
+  define('DATABASE', 'evoluo_db');
+  define('USER', 'evoluo_db');
+  define('PASSWORD', 'AOJJRaHDuU9p');
+*/
+
+//XAMP
+/*
+define('HOST', 'localhost');
+  define('DATABASE', 'web2');
+  define('USER', 'root');
+  define('PASSWORD', '');
+  */
+
 define('DB_SERVER','localhost');
 define('DB_USER','root');
 define('DB_PASS' ,'');
@@ -12,4 +29,3 @@ echo "Failed to connect to MySQL: " . mysqli_connect_error();
  }
 
 ?>
-

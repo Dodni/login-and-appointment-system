@@ -3,7 +3,7 @@ include_once('includes/config.php');
 if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
   } else{
-    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,11 +31,11 @@ if (strlen($_SESSION['id']==0)) {
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
 
-<?php 
+<?php
 $userid=$_SESSION['id'];
 $query=mysqli_query($con,"select * from users where id='$userid'");
 while($result=mysqli_fetch_array($query))
-{?>                        
+{?>
                         <div class="row" >
                             <div class="col-xl-5 col-md-6" >
                                 <div class="card bg-primary text-white mb-4">
@@ -53,7 +53,7 @@ while($result=mysqli_fetch_array($query))
                         </div>
               
                         </div>
-                   
+
                     </div>
                 </main>
           <?php include('includes/footer.php');?>

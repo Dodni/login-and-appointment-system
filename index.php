@@ -8,6 +8,7 @@
         <meta name="author" content="" />
         <title>Home | Registration and Login System </title>
         <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/calendar.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -17,18 +18,18 @@
             <!-- Sidebar Toggle-->
 
             <!-- Navbar Search-->
-          
+
         </nav>
-		
+
         <div id="layoutSidenav">
-       
+
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">   User Registration & Login and User Management System With admin panel</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-              
+
                         </ol>
         <div class="row" >
                             <div class="col-xl-4 col-md-6" >
@@ -54,16 +55,26 @@
                                     <div class="card-body">Admin Panel</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="admin">Login Here</a>
-                          
+
                                     </div>
                                 </div>
                             </div>
 
                             </div>
+                            <?php
+                            include 'admin/calendar.php';
+
+                            $calendar = new Calendar();
+
+                            echo $calendar->show();
+
+                            echo "<br>";
+
+                            ?>
                         <div style="height: 100vh"></div>
-						
+
 						<!-- START HERE -->
-						
+
 						<!--
 Author: Designmaz
 Author URL: https://www.designmaz.net
