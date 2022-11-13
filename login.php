@@ -1,6 +1,6 @@
-<?php session_start(); 
+<?php session_start();
 include_once('includes/config.php');
-// Code for login 
+// Code for login
 if(isset($_POST['login']))
 {
 $password=$_POST['password'];
@@ -49,14 +49,14 @@ echo "<script>alert('Invalid username or password');</script>";
 <hr />
     <h3 class="text-center font-weight-light my-4">User Login</h3></div>
                                     <div class="card-body">
-                                        
+
                                         <form method="post">
-                                            
+
 <div class="form-floating mb-3">
 <input class="form-control" name="uemail" type="email" placeholder="name@example.com" required/>
 <label for="inputEmail">Email address</label>
 </div>
-                                            
+
 
 <div class="form-floating mb-3">
 <input class="form-control" name="password" type="password" placeholder="Password" required />

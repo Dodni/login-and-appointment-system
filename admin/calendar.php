@@ -1,4 +1,7 @@
 <?php
+
+
+
 class Calendar {
 
     /**
@@ -6,6 +9,11 @@ class Calendar {
      */
     public function __construct(){
         $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
+
+        include 'models/work_model.php';
+        $workModel = new Work_model();
+        $this->freeToday = $workModel->getWorkData();
+        var_dump($this->freeToday[1]);
     }
 
     /********************* PROPERTY ********************/
@@ -22,6 +30,11 @@ class Calendar {
     private $daysInMonth=0;
 
     private $naviHref= null;
+
+    private $freeToday = null;
+
+
+
 
     /********************* PUBLIC **********************/
 
@@ -121,9 +134,21 @@ class Calendar {
         }
 
         $today = date('Y-m-d');
+        //var_dump($this->actual);
+        var_dump($this->freeToday[1]);
 
-        return '<a href="#"><li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
-                ($cellContent==null?'mask':''). ' ' .($this->currentDate == $today? ' todayIsBlue ' : ' NULL '). ' ">'.$cellContent.'</li></a>';
+
+
+
+        return '<a href="#">
+                <li id="li-'.$this->currentDate.'"
+                class="
+                '.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
+                ($cellContent==null?'mask':''). ' ' .($this->currentDate == $today? ' todayIsBlue ' : ($this->currentDate == $this->freeToday[1] ? 'freeIsGreen' : 'NULL')). ' "
+                >
+                '.$cellContent.'
+                </li>
+                </a>';
     }
 
     /**

@@ -61,8 +61,12 @@
                             </div>
 
                             </div>
+                            <h1 class="">My free appointments</h1>
                             <?php
                             include 'admin/calendar.php';
+
+
+
 
                             $calendar = new Calendar();
 
