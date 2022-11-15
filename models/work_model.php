@@ -3,7 +3,7 @@
 /**
  * Model class for communicate with the database.
  */
-class Work_model
+class Work
 {
 
   function __construct()
@@ -14,16 +14,16 @@ class Work_model
 
   function getWorkData()
   {
-    include_once('includes/config.php');
-    $sql = "SELECT * FROM `work`";
-    $result = mysqli_query($con,$sql);
-    // Numeric array
-    $row = mysqli_fetch_array($result, MYSQLI_NUM);
-    // Associative array
-    // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-    // printf ("%s (%s)\n", $row[0], $row[1]);
-    //var_dump($row);
-    return $row;
+    require_once('includes/config.php');
+
+
+    $result = $mysqli->query("SELECT * FROM work");
+
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+    //var_dump($rows);
+
+    return $rows;
   }
 }
 

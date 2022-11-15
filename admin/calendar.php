@@ -10,10 +10,10 @@ class Calendar {
     public function __construct(){
         $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
 
-        include 'models/work_model.php';
-        $workModel = new Work_model();
+        require_once('models/work_model.php');
+        $workModel = new Work();
         $this->freeToday = $workModel->getWorkData();
-        var_dump($this->freeToday[1]);
+        //var_dump($this->freeToday);
     }
 
     /********************* PROPERTY ********************/
@@ -135,7 +135,7 @@ class Calendar {
 
         $today = date('Y-m-d');
         //var_dump($this->actual);
-        var_dump($this->freeToday[1]);
+        //var_dump($this->freeToday[1]);
 
 
 

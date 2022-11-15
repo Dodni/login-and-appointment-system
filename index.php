@@ -63,7 +63,10 @@
                             </div>
                             <h1 class="">My free appointments</h1>
                             <?php
-                            include 'admin/calendar.php';
+                            require_once('admin/calendar.php');
+                            require_once('models/work_model.php');
+
+                            $workmodel = new Work();
 
 
 
@@ -71,6 +74,7 @@
                             $calendar = new Calendar();
 
                             echo $calendar->show();
+
 
                             echo "<br>";
 
