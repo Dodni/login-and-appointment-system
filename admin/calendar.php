@@ -37,7 +37,10 @@ class Calendar {
 
     private $cellNumberCount = 0;
 
+    private $freeDaysResult = 0000-00-00;
+
     private $freeDaysCounter = 0;
+
 
 
 
@@ -143,11 +146,12 @@ class Calendar {
         $today = date('Y-m-d');
 
 
-        $result = 0000-00-00;
         if ($this->currentDate == $this->freeToday[$this->freeDaysCounter]) {
-          $result = $this->freeDaysCounter;
+          $this->freeDaysResult = $this->freeDaysCounter;
           $this->freeDaysCounter++;
         }
+
+        echo $this->currentDate . " and " . $this->freeDaysResult . " and " . $this->freeDaysCounter . "<br>";
 
 
         return '<a href="#">
@@ -155,7 +159,7 @@ class Calendar {
                 class="
                 '.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
                 ($cellContent==null?'mask':''). ' '
-                .($this->currentDate == $today? ' todayIsBlue ' : ($this->currentDate == $this->freeToday[$result] ? 'freeIsGreen' : 'NULL')). ' "
+                .($this->currentDate == $today? ' todayIsBlue ' : ($this->currentDate == $this->freeToday[$this->freeDaysResult ] ? 'freeIsGreen' : 'NULL')). ' "
                 >
                 '.$cellContent.'
                 </li>

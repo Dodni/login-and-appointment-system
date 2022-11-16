@@ -28,7 +28,7 @@ class Work
   {
     require_once('includes/config.php');
     $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-    $result = $mysqli->query("SELECT * FROM WORK where workdate >= CURDATE() and appointmentfree = 1");
+    $result = $mysqli->query("SELECT * FROM WORK where workdate >= CURDATE() and appointmentfree = 1 ORDER BY workdate ASC");
 
     $rows = $result->fetch_all(MYSQLI_ASSOC);
 
