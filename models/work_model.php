@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * Model class for communicate with the database.
  */
 class Work
@@ -42,6 +42,20 @@ class Work
 
     //var_dump($freeAppointmentDates);
     return $freeAppointmentDates;
+  }
+
+
+  /*
+   * It chechs the DB free days. If min one is avilable it gives back date.
+   */
+  function getFreeDay($freeForToday)
+  {
+    require_once('includes/config.php');
+    $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+    $result = $mysqli->query("SELECT * FROM WORK where workdate LIKE '$freeForToday' and workdate > CURRENT_DATE and appointmentfree = 1 LIMIT 1");
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+    return (!$rows) ? $rows : $rows[0]["workdate"];
   }
 }
 

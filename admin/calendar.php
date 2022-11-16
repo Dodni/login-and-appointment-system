@@ -12,9 +12,7 @@ class Calendar {
 
         require_once('models/work_model.php');
         $workModel = new Work();
-        //$workModel->getWorkData();
         $this->freeToday = $workModel->getFreeAppointments();
-        var_dump($this->freeToday);
 
     }
 
@@ -146,23 +144,24 @@ class Calendar {
         $today = date('Y-m-d');
 
 
-        if ($this->currentDate == $this->freeToday[$this->freeDaysCounter]) {
-          $this->freeDaysResult = $this->freeDaysCounter;
-          $this->freeDaysCounter++;
-        }
 
-        echo $this->currentDate . " and " . $this->freeDaysResult . " and " . $this->freeDaysCounter . "<br>";
 
+        $workModel = new Work();
+        //$workModel->getFreeDay('2022-11-19');
+        $result = $workModel->getFreeDay($this->currentDate);
+        //var_dump($result);
 
         return '<a href="#">
-                <li id="li-'.$this->currentDate.'"
-                class="
-                '.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
-                ($cellContent==null?'mask':''). ' '
-                .($this->currentDate == $today? ' todayIsBlue ' : ($this->currentDate == $this->freeToday[$this->freeDaysResult ] ? 'freeIsGreen' : 'NULL')). ' "
-                >
-                '.$cellContent.'
-                </li>
+                  <li id="li-'.$this->currentDate.'"
+                  class=
+                    "
+                      '.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
+                      ($cellContent==null?'mask':''). ' '
+                      .($this->currentDate == $today ? ' todayIsBlue ' : (($this->currentDate != null && $this->currentDate == $result) ? 'freeIsGreen' : 'fullIsRed')). '
+                    "
+                  >
+                    '.$cellContent.'
+                  </li>
                 </a>';
     }
 

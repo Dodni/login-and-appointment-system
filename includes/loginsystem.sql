@@ -62,7 +62,6 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`, `contactno`, `posting_date`) VALUES
 (13, 'Anuj', 'Kumar', 'phpgurukulteam@gmail.com', 'Test@123', '1234567890', '2021-08-09 18:30:00'),
-(15, 'Donat', 'Feher', 'feherdonat99@gmail.com', 'RapRuso123', '1234567891', '2022-11-06 18:47:54');
 
 --
 -- Indexek a kiírt táblákhoz
