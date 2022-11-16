@@ -3,7 +3,7 @@ include_once('includes/config.php');
 if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
   } else{
-//Code for Updation 
+//Code for Updation
 if(isset($_POST['update']))
 {
     $fname=$_POST['fname'];
@@ -19,9 +19,8 @@ if($msg)
 }
 }
 
-
-    
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -42,8 +41,8 @@ if($msg)
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        
-<?php 
+
+<?php
 $userid=$_SESSION['id'];
 $query=mysqli_query($con,"select * from users where id='$userid'");
 while($result=mysqli_fetch_array($query))
@@ -69,8 +68,8 @@ while($result=mysqli_fetch_array($query))
                                        <th>Email</th>
                                        <td colspan="3"><?php echo $result['email'];?></td>
                                    </tr>
-                               
-                                     
+
+
                                         <tr>
                                        <th>Reg. Date</th>
                                        <td colspan="3"><?php echo $result['posting_date'];?></td>

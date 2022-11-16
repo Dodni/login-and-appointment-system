@@ -67,7 +67,7 @@
                             require_once('models/work_model.php');
 
                             $workmodel = new Work();
-
+                            $workmodel->getWorkData();
 
 
 

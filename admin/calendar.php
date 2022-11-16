@@ -12,8 +12,10 @@ class Calendar {
 
         require_once('models/work_model.php');
         $workModel = new Work();
-        $this->freeToday = $workModel->getWorkData();
-        //var_dump($this->freeToday);
+        //$workModel->getWorkData();
+        $this->freeToday = $workModel->getFreeAppointments();
+        var_dump($this->freeToday);
+
     }
 
     /********************* PROPERTY ********************/
@@ -32,6 +34,10 @@ class Calendar {
     private $naviHref= null;
 
     private $freeToday = null;
+
+    private $cellNumberCount = 0;
+
+    private $freeDaysCounter = 0;
 
 
 
@@ -105,6 +111,7 @@ class Calendar {
     /**
     * create the li element for ul
     */
+
     private function _showDay($cellNumber){
 
         if($this->currentDay==0){
@@ -134,17 +141,21 @@ class Calendar {
         }
 
         $today = date('Y-m-d');
-        //var_dump($this->actual);
-        //var_dump($this->freeToday[1]);
 
 
+        $result = 0000-00-00;
+        if ($this->currentDate == $this->freeToday[$this->freeDaysCounter]) {
+          $result = $this->freeDaysCounter;
+          $this->freeDaysCounter++;
+        }
 
 
         return '<a href="#">
                 <li id="li-'.$this->currentDate.'"
                 class="
                 '.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
-                ($cellContent==null?'mask':''). ' ' .($this->currentDate == $today? ' todayIsBlue ' : ($this->currentDate == $this->freeToday[1] ? 'freeIsGreen' : 'NULL')). ' "
+                ($cellContent==null?'mask':''). ' '
+                .($this->currentDate == $today? ' todayIsBlue ' : ($this->currentDate == $this->freeToday[$result] ? 'freeIsGreen' : 'NULL')). ' "
                 >
                 '.$cellContent.'
                 </li>
