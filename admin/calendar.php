@@ -157,7 +157,7 @@ class Calendar {
                     "
                       '.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
                       ($cellContent==null?'mask':''). ' '
-                      .($this->currentDate == $today ? ' todayIsBlue ' : (($this->currentDate != null && $this->currentDate == $result) ? 'freeIsGreen' : 'fullIsRed')). '
+                      .($this->currentDate == $today ? ' todayIsBlue text-white' : (($this->currentDate != null && $this->currentDate == $result) ? 'freeIsGreen text-white' : 'fullIsYellow')). '
                     "
                   >
                     '.$cellContent.'
