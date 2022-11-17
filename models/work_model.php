@@ -13,9 +13,9 @@ class Work
 
   function getWorkData()
   {
-    require_once('includes/config.php');
+    require_once('../includes/config.php');
     $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-    $result = $mysqli->query("SELECT * FROM work");
+    $result = $mysqli->query("SELECT * FROM work ORDER BY workdate ASC");
 
     $rows = $result->fetch_all(MYSQLI_ASSOC);
 
@@ -56,6 +56,16 @@ class Work
     $rows = $result->fetch_all(MYSQLI_ASSOC);
 
     return (!$rows) ? $rows : $rows[0]["workdate"];
+  }
+
+  function deleteWork($workId)
+  {
+    require_once('includes/config.php');
+    $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+    $result = $mysqli->query("DELETE FROM work WHERE `work`.`workid` = '$workId' ");
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+    return 0;
   }
 }
 

@@ -7,14 +7,18 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            
-                 
+
+                            <a class="nav-link" href="manage-my-appointments.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-calendar"></i></div>
+                                Manage My Appointments
+                            </a>
+
                             <a class="nav-link" href="manage-users.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Manage Users
                             </a>
 
- <a class="nav-link" href="bwdates-report-ds.php">
+                            <a class="nav-link" href="bwdates-report-ds.php">
                                 <div class="sb-nav-link-icon"><i class="fa fa-calendar"></i></div>
                                 B/w Dates Report
                             </a>
@@ -25,6 +29,6 @@
                             </a>
                         </div>
                     </div>
-                
+
                 </nav>
             </div>
