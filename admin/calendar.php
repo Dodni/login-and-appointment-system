@@ -9,7 +9,7 @@ class Calendar {
      */
     public function __construct(){
         $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
-
+        echo "<script src='js/calendar.js' language='javascript'></script>";
         require_once('models/work_model.php');
         $workModel = new Work();
         $this->freeToday = $workModel->getFreeAppointments();
@@ -79,8 +79,8 @@ class Calendar {
 
         $this->daysInMonth=$this->_daysInMonth($month,$year);
 
-        $content='<div id="calendar">'.
-                        '<div class="box">'.
+        $content='<div id="calendar" class="container-sm">'.
+                        '<div class="box container-sm">'.
                         $this->_createNavi().
                         '</div>'.
                         '<div class="box-content">'.
@@ -151,7 +151,7 @@ class Calendar {
         $result = $workModel->getFreeDay($this->currentDate);
         //var_dump($result);
 
-        return '<a href="#">
+        return '<button class="emptyButton" onclick="registrationFirst()">
                   <li id="li-'.$this->currentDate.'"
                   class=
                     "
@@ -162,7 +162,7 @@ class Calendar {
                   >
                     '.$cellContent.'
                   </li>
-                </a>';
+                </button>';
     }
 
     /**
@@ -179,7 +179,7 @@ class Calendar {
         $preYear = $this->currentMonth==1?intval($this->currentYear)-1:$this->currentYear;
 
         return
-            '<div class="header">'.
+            '<div class="header container-sm">'.
                 '<a class="prev" href="'.$this->naviHref.'?month='.sprintf('%02d',$preMonth).'&year='.$preYear.'">Prev</a>'.
                     '<span class="title">'.date('Y M',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')).'</span>'.
                 '<a class="next" href="'.$this->naviHref.'?month='.sprintf("%02d", $nextMonth).'&year='.$nextYear.'">Next</a>'.

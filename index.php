@@ -21,12 +21,12 @@
 
         </nav>
 
-        <div id="layoutSidenav">
+        <div id="">
 
-            <div id="layoutSidenav_content">
+            <div id="">
                 <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">   User Registration & Login and User Management System With admin panel</h1>
+                    <div class="container-sm">
+                        <h1 class="mt-4 text-center">User Registration & Login and User Management System With admin panel</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.php">Home</a></li>
 
@@ -61,24 +61,16 @@
                             </div>
 
                             </div>
-                            <h1 class="">My free appointments</h1>
-                            <?php
-                            require_once('admin/calendar.php');
-                            require_once('models/work_model.php');
+                              <h1 class="text-center">My free appointments</h1>
+                              <?php
+                              require_once('admin/calendar.php');
 
-                            $workmodel = new Work();
-                            $workmodel->getWorkData();
+                              $calendar = new Calendar();
 
+                              echo $calendar->show();
 
+                              ?>
 
-                            $calendar = new Calendar();
-
-                            echo $calendar->show();
-
-
-                            echo "<br>";
-
-                            ?>
                         <div style="height: 100vh"></div>
 
 						<!-- START HERE -->

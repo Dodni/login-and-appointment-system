@@ -2,8 +2,14 @@
 div#calendar{
   margin:0px auto;
   padding:0px;
-  width: 602px;
+  width: calc(702px - calc(70px + 30px));
   font-family:Helvetica, "Times New Roman", Times, serif;
+}
+
+@media screen and (max-width: 767px){
+  div#calendar{
+    width: 100%;
+  }
 }
 
 div#calendar div.box{
@@ -19,10 +25,6 @@ div#calendar div.box{
 div#calendar div.header{
     line-height:40px;
     vertical-align:middle;
-    position:absolute;
-    left:11px;
-    top:0px;
-    width:582px;
     height:40px;
     text-align:center;
 }
@@ -45,10 +47,13 @@ div#calendar div.header span.title{
 
 div#calendar div.header a.prev{
     left:0px;
+    padding: 0px 0px 0px 10px;
+
 }
 
 div#calendar div.header a.next{
     right:0px;
+    padding: 0px 10px 0px 0px;
 }
 
 
@@ -133,5 +138,9 @@ div.clear{
 
 .fullIsYellow{
   background-color: #ffc107 !important;
+}
 
+.emptyButton{
+  all: unset;
+  cursor: pointer;
 }
