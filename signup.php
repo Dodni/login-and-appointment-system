@@ -1,13 +1,14 @@
 <?php session_start();
 require_once('includes/config.php');
 
-//Code for Registration 
+//Code for Registration
 if(isset($_POST['submit']))
 {
     $fname=$_POST['fname'];
     $lname=$_POST['lname'];
     $email=$_POST['email'];
     $password=$_POST['password'];
+    $password=md5($password);
     $contact=$_POST['contact'];
 $sql=mysqli_query($con,"select id from users where email='$email'");
 $row=mysqli_num_rows($sql);
@@ -45,7 +46,7 @@ document.signup.confirmpassword.focus();
 return false;
 }
 return true;
-} 
+}
 
 </script>
 
@@ -72,7 +73,7 @@ return true;
 <label for="inputFirstName">First name</label>
 </div>
 </div>
-                                                
+
 <div class="col-md-6">
 <div class="form-floating">
 <input class="form-control" id="lname" name="lname" type="text" placeholder="Enter your last name" required />
@@ -86,13 +87,13 @@ return true;
 <input class="form-control" id="email" name="email" type="email" placeholder="phpgurukulteam@gmail.com" required />
 <label for="inputEmail">Email address</label>
 </div>
- 
+
 
 <div class="form-floating mb-3">
 <input class="form-control" id="contact" name="contact" type="text" placeholder="1234567890" required pattern="[0-9]{10}" title="10 numeric characters only"  maxlength="10" required />
 <label for="inputcontact">Contact Number</label>
 </div>
-        
+
 
 
 <div class="row mb-3">
@@ -102,7 +103,7 @@ return true;
 <label for="inputPassword">Password</label>
 </div>
 </div>
-                                                
+
 
 <div class="col-md-6">
 <div class="form-floating mb-3 mb-md-0">
@@ -111,7 +112,7 @@ return true;
 </div>
 </div>
 </div>
-                                            
+
 
 <div class="mt-4 mb-0">
 <div class="d-grid"><button type="submit" class="btn btn-primary btn-block" name="submit">Create Account</button></div>

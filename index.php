@@ -31,7 +31,7 @@
                             <li class="breadcrumb-item"><a href="index.php">Home</a></li>
 
                         </ol>
-        <div class="row" >
+                        <div class="row" >
                             <div class="col-xl-4 col-md-6" >
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Not Registers Yet</div>
@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                             </div>
-<div class="col-xl-4 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">Already Registered</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
 
-<div class="col-xl-4 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Admin Panel</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">

@@ -7,14 +7,19 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            
-                 
+
+
+                            <a class="nav-link" href="book-an-appointment.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-calendar"></i></div>
+                                Book an appointment
+                            </a>
+
                             <a class="nav-link" href="profile.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Profile
                             </a>
 
-  <a class="nav-link" href="change-password.php">
+                            <a class="nav-link" href="change-password.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-key"></i></div>
                                Change Password
                             </a>
@@ -25,6 +30,6 @@
                             </a>
                         </div>
                     </div>
-                
+
                 </nav>
             </div>

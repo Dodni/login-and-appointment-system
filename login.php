@@ -3,8 +3,7 @@ include_once('includes/config.php');
 // Code for login
 if(isset($_POST['login']))
 {
-$password=$_POST['password'];
-$dec_password=$password;
+$dec_password=md5($_POST['password']);
 $useremail=$_POST['uemail'];
 $ret= mysqli_query($con,"SELECT id,fname FROM users WHERE email='$useremail' and password='$dec_password'");
 $num=mysqli_fetch_array($ret);

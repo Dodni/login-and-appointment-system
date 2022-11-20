@@ -124,7 +124,7 @@ echo "<script>alert('Method changed for payed and the appointment to reserved!')
                             </div>
                         </div>
                         <div class="d-flex justify-content-center m-3">
-                          <button type="button" class="btn btn-primary" name="button">Add new free appointment</button>
+                          <a href="add-new-appointment.php" class="btn btn-primary">Add new free appointment</a>
                         </div>
                     </div>
                 </main>

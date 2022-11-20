@@ -27,8 +27,8 @@ $workid=$_GET['workid'];
 
 if($msg)
 {
-  //echo "<script>alert('Profile updated successfully');</script>";
-  //echo "<script type='text/javascript'> document.location = 'manage-users.php'; </script>";
+  echo "<script>alert('The appointment updated successfully');</script>";
+  echo "<script type='text/javascript'> document.location = 'manage-my-appointments.php'; </script>";
 }
 }
 
