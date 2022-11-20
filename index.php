@@ -76,7 +76,7 @@
 						<!-- START HERE -->
 
 						<!--
-Author: Designmaz
-Author URL: https://www.designmaz.net
-License URL: https://www.designmaz.net/licence/
+Author: Donat Feher
+Author URL: http://donatfeher.intelligentbusiness.hu
+License URL: http://donatfeher.intelligentbusiness.hu
 -->

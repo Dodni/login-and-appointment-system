@@ -95,7 +95,7 @@ if($msg)
                                        <td colspan="3"><input class="form-control" id="studentid" name="studentid" type="" value=""/></td>
                                    </tr>
                                    <tr>
-                                       <td colspan="4" style="text-align:center ;"><button type="submit" class="btn btn-primary btn-block" name="post">Update</button></td>
+                                       <td colspan="4" style="text-align:center ;"><button type="submit" class="btn btn-primary btn-block" name="post">Create</button></td>
 
                                    </tr>
                                     </tbody>
