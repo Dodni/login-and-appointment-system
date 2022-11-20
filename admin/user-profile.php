@@ -3,7 +3,7 @@ include_once('../includes/config.php');
 if (strlen($_SESSION['adminid']==0)) {
   header('location:logout.php');
   } else{
-    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,15 +25,18 @@ if (strlen($_SESSION['adminid']==0)) {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        
-<?php 
+
+<?php
+if($_GET['uid'] == "N/A"){
+  echo "<h1>Not avilable!</h1>";
+}
 $userid=$_GET['uid'];
 $query=mysqli_query($con,"select * from users where id='$userid'");
 while($result=mysqli_fetch_array($query))
 {?>
                         <h1 class="mt-4"><?php echo $result['fname'];?>'s Profile</h1>
                         <div class="card mb-4">
-                     
+
                             <div class="card-body">
                                 <a href="edit-profile.php?uid=<?php echo $result['id'];?>">Edit</a>
                                 <table class="table table-bordered">
@@ -53,7 +56,7 @@ while($result=mysqli_fetch_array($query))
                                        <th>Contact No.</th>
                                        <td colspan="3"><?php echo $result['contactno'];?></td>
                                    </tr>
-                                     
+
                                         <tr>
                                        <th>Reg. Date</th>
                                        <td colspan="3"><?php echo $result['posting_date'];?></td>

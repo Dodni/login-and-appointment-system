@@ -21,13 +21,15 @@ if(isset($_GET['payed']))
 {
 $adminid=$_GET['payed'];
 echo $adminid;
-$msg=mysqli_query($con,"UPDATE `work` SET `payed` = '1' WHERE `work`.`workid` = '$adminid'");
+$msg=mysqli_query($con,"UPDATE `work` SET `payed` = '1',`appointmentfree` = '0'  WHERE `work`.`workid` = '$adminid'");
 if($msg)
 {
-echo "<script>alert('Method changed for payed');</script>";
+echo "<script>alert('Method changed for payed and the appointment to reserved!');</script>";
 }
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,7 +42,6 @@ echo "<script>alert('Method changed for payed');</script>";
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-
     </head>
     <body class="sb-nav-fixed">
       <?php include_once('includes/navbar.php');?>
@@ -64,26 +65,28 @@ echo "<script>alert('Method changed for payed');</script>";
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                          <th>WorkID</th>
-                                          <th>Work Date</th>
-                                          <th>Work Time Start</th>
-                                          <th>Appointment Free</th>
-                                          <th>Working Hours</th>
-                                          <th>Description</th>
-                                          <th>Payed?</th>
-                                          <th>Action</th>
+                                          <th style="text-align: center;">WorkID</th>
+                                          <th style="text-align: center;">Work Date</th>
+                                          <th style="text-align: center;">Work Time Start</th>
+                                          <th style="text-align: center;">Appointment Free</th>
+                                          <th style="text-align: center;">Working Hours</th>
+                                          <th style="text-align: center;">Description</th>
+                                          <th style="text-align: center;">Payed?</th>
+                                          <th style="text-align: center;">Student ID</th>
+                                          <th style="text-align: center;">Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                          <th>WorkID</th>
-                                          <th>Work Date</th>
-                                          <th>Work Time Start</th>
-                                          <th>Appointment Free</th>
-                                          <th>Working Hours</th>
-                                          <th>Description</th>
-                                          <th>Payed?</th>
-                                          <th>Action</th>
+                                          <th style="text-align: center;">WorkID</th>
+                                          <th style="text-align: center;">Work Date</th>
+                                          <th style="text-align: center;">Work Time Start</th>
+                                          <th style="text-align: center;">Appointment Free</th>
+                                          <th style="text-align: center;">Working Hours</th>
+                                          <th style="text-align: center;">Description</th>
+                                          <th style="text-align: center;">Payed?</th>
+                                          <th style="text-align: center;">Student ID</th>
+                                          <th style="text-align: center;">Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -94,18 +97,21 @@ echo "<script>alert('Method changed for payed');</script>";
                               foreach ($result as $key => $value) {
                               ?>
                               <tr>
-                                  <td><?php echo $value["workid"];?></td>
-                                  <td><?php echo $value["workdate"];?></td>
-                                  <td><?php echo $value["worktimestart"];?></td>
-                                  <td><?php echo ($value["appointmentfree"] == 1) ? "Yes": "No";?></td>
-                                  <td><?php echo $value["workinghour"];?></td>
-                                  <td><?php echo $value['description'];?></td>
-                                  <td>
+                                  <td style="text-align: center;"><?php echo $value["workid"];?></td>
+                                  <td style="text-align: center;"><?php echo $value["workdate"];?></td>
+                                  <td style="text-align: center;"><?php echo $value["worktimestart"];?></td>
+                                  <td style="text-align: center;"><?php echo ($value["appointmentfree"] == 1) ? "Yes": "No";?></td>
+                                  <td style="text-align: center;"><?php echo $value["workinghour"];?></td>
+                                  <td style="text-align: center;"><?php echo $value['description'];?></td>
+                                  <td style="text-align: center;">
                                     <?php echo ($value["payed"] == 1) ? "Yes": "No";?>
                                   </td>
-                                  <td>
+                                  <td style="text-align: center;">
+                                    <a href="user-profile.php?uid=<?php echo ($value["studentid"] == NULL) ? "N/A": $value["studentid"];?>"><?php echo ($value["studentid"] == NULL) ? "N/A": $value["studentid"];?></a>
+                                  </td>
+                                  <td style="text-align: center;">
                                      <a href="my-appointment.php?workid=<?php echo $value['workid'];?>"><i class="fas fa-edit"></i></a>
-                                     <a href="manage-my-appointments.php?payed=<?php echo $value['workid'];?>" onClick="return confirm('Do you really want to set payed?');"><i class="fas fa-thumbs-up" aria-hidden="true"></i></a>
+                                     <a href="manage-my-appointments.php?payed=<?php echo $value['workid'];?>" onClick="return confirm('Do you really want to set payed and the appointment to reserved?');"><i class="fas fa-thumbs-up" aria-hidden="true"></i></a>
                                      <a href="manage-my-appointments.php?workid=<?php echo $value['workid'];?>" onClick="return confirm('Do you really want to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                   </td>
                               </tr>
@@ -116,6 +122,9 @@ echo "<script>alert('Method changed for payed');</script>";
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                        <div class="d-flex justify-content-center m-3">
+                          <button type="button" class="btn btn-primary" name="button">Add new free appointment</button>
                         </div>
                     </div>
                 </main>
