@@ -4,6 +4,20 @@ if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
   } else{
 
+    //Code for Updation
+    if(isset($_POST['post']))
+    {
+        $szallodaselect=$_POST['szallodaselect'];
+        $msg=mysqli_query($con,"UPDATE work SET appointmentfree = 0 WHERE workid=$szallodaselect");
+
+    if($msg)
+    {
+      echo "<script>alert('Congratulation!!!! You booked successfully!!!');</script>";
+      echo "<script type='text/javascript'> document.location = 'book-an-appointment.php'; </script>";
+    }
+    }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +32,9 @@ if (strlen($_SESSION['id']==0)) {
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/calendar.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/superfish.js"></script>
+        <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="js/ajax.js"></script>
     </head>
     <body class="sb-nav-fixed">
       <?php include_once('includes/navbar.php');?>
@@ -27,71 +44,44 @@ if (strlen($_SESSION['id']==0)) {
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Book an appointment</h1>
-                        <div class="row" >
-                            <div class="col-xl-5 col-md-6" >
-                                <div class="">
+                        <hr />
+                        <div class="" >
+                            <div class="justify-content-center m-3">
 
-                                  <h3 class="text-center">Free appointments </h3>
-                                  <?php
-                                  require_once('admin/calendar.php');
-
-                                  $calendar = new Calendar();
-
-                                  echo $calendar->show();
-
-                                  ?>
-
-                                  <form method="post">
-                                         <div class="card-body">
-                                             <table class="table table-bordered">
-                                                <tr>
-                                                 <th>Date</th>
-                                                    <td><input class="form-control" id="workdate" name="workdate" type="date" value="" required /></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Work time starts </th>
-                                                    <td><input class="form-control" id="worktimestart" name="worktimestart" type="time" value=""  required /></td>
-                                                </tr>
-                                                      <tr>
-                                                    <th>Appointment is free</th>
-                                                    <td colspan="3">
-                                                      <select name="appointmentfree" id="appointmentfree">
-                                                        <option value="1">Yes</option>
-                                                        <option value="0">No</option>
-                                                     </select>
-                                                </tr>
-                                                <tr>
-                                                    <th>Working hours</th>
-                                                    <td colspan="3"><input class="form-control" id="workinghour" name="workinghour" type="number" value="1" required/></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Description</th>
-                                                    <td colspan="3"><input class="form-control" id="description" name="description" type="text" value=""/></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Payed ?</th>
-                                                    <td colspan="3">
-                                                      <select name="payed" id="payed">
-                                                        <option value="0">No</option>
-                                                        <option value="1">Yes</option>
-                                                     </select>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Student ID</th>
-                                                    <td colspan="3"><input class="form-control" id="studentid" name="studentid" type="" value=""/></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4" style="text-align:center ;"><button type="submit" class="btn btn-primary btn-block" name="post">Update</button></td>
-
-                                                </tr>
-                                                 </tbody>
-                                             </table>
-                                         </div>
-                                         </form>
-
+                              <form class="" action="book-an-appointment.php" method="post">
+                                <div id = 'informaciosdiv' class="card-body">
+                                  <h3 class="text-center">Free appointments:</h3>
+                                  <table class="table table-bordered">
+                                    <tr>
+                                      <td colspan="3" style="text-align: center; vertical-align: middle;">
+                                        <label for='helysegcimke'>Free appointments:</label>
+                                        <select class="form-select" id='helysegselect' name="helysegselect"></select>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="4" style="text-align: center; vertical-align: middle;">
+                                        <label for = 'szalloda'>Course starting time:</label>
+                                        <select class="form-select" id='szallodaselect' name="szallodaselect"></select>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="text-align:center; vertical-align: middle;"><button type="submit" class="btn btn-primary btn-block" name="post">Book!</button></td>
+                                    </tr>
+                                  </table>
                                 </div>
+                              </form>
+                              <div class="pb-5">
+                                <?php
+                                require_once('admin/calendar.php');
+
+                                $calendar = new Calendar("logined");
+
+                                echo $calendar->show();
+
+                                ?>
+                              </div>
                             </div>
+
                         </div>
                         </div>
 
@@ -100,6 +90,7 @@ if (strlen($_SESSION['id']==0)) {
                         </div>
 
                     </div>
+
                 </main>
           <?php include('includes/footer.php');?>
             </div>
