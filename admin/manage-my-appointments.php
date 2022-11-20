@@ -104,7 +104,7 @@ echo "<script>alert('Method changed for payed');</script>";
                                     <?php echo ($value["payed"] == 1) ? "Yes": "No";?>
                                   </td>
                                   <td>
-                                     <a href="user-profile.php?uid=<?php echo $row['id'];?>"><i class="fas fa-edit"></i></a>
+                                     <a href="my-appointment.php?workid=<?php echo $value['workid'];?>"><i class="fas fa-edit"></i></a>
                                      <a href="manage-my-appointments.php?payed=<?php echo $value['workid'];?>" onClick="return confirm('Do you really want to set payed?');"><i class="fas fa-thumbs-up" aria-hidden="true"></i></a>
                                      <a href="manage-my-appointments.php?workid=<?php echo $value['workid'];?>" onClick="return confirm('Do you really want to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                   </td>
