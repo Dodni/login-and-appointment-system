@@ -41,7 +41,7 @@ echo "<script>alert('Data deleted');</script>";
                             <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
                             <li class="breadcrumb-item active">Yesterday Registered Users</li>
                         </ol>
-            
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -72,7 +72,7 @@ echo "<script>alert('Data deleted');</script>";
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                              <?php $ret=mysqli_query($con,"select * from users where date(posting_date)=CURRENT_DATE()-1");
+                              <?php $ret=mysqli_query($con,"select * from users where date(posting_date)=CURRENT_DATE()-1");
                               $cnt=1;
                               while($row=mysqli_fetch_array($ret))
                               {?>
@@ -83,14 +83,13 @@ echo "<script>alert('Data deleted');</script>";
                                   <td><?php echo $row['email'];?></td>
                                   <td><?php echo $row['contactno'];?></td>  <td><?php echo $row['posting_date'];?></td>
                                   <td>
-                                     
-                                     <a href="user-profile.php?uid=<?php echo $row['id'];?>"> 
-                          <i class="fas fa-edit"></i></a>
+
+                                     <a href="user-profile.php?uid=<?php echo $row['id'];?>"><i class="fas fa-edit"></i></a>
                                      <a href="manage-users.php?id=<?php echo $row['id'];?>" onClick="return confirm('Do you really want to delete');"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                   </td>
                               </tr>
                               <?php $cnt=$cnt+1; }?>
-                                      
+
                                     </tbody>
                                 </table>
                             </div>

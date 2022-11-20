@@ -65,7 +65,7 @@
                               <?php
                               require_once('admin/calendar.php');
 
-                              $calendar = new Calendar();
+                              $calendar = new Calendar("not logined");
 
                               echo $calendar->show();
 

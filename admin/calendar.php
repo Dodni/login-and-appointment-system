@@ -7,9 +7,14 @@ class Calendar {
     /**
      * Constructor
      */
-    public function __construct(){
+    public function __construct($logined){
+
         $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
-        echo "<script src='js/calendar.js' language='javascript'></script>";
+        if ($logined == "logined") {
+
+        } else {
+          echo "<script src='js/calendar.js' language='javascript'></script>";
+        }
         require_once('models/work_model.php');
         $workModel = new Work();
         $this->freeToday = $workModel->getFreeAppointments();

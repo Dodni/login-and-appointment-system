@@ -9,13 +9,13 @@ if(isset($_POST['update']))
     $fname=$_POST['fname'];
     $lname=$_POST['lname'];
     $contact=$_POST['contact'];
-$userid=$_SESSION['id'];
+    $userid=$_SESSION['id'];
     $msg=mysqli_query($con,"update users set fname='$fname',lname='$lname',contactno='$contact' where id='$userid'");
 
 if($msg)
 {
-    echo "<script>alert('Profile updated successfully');</script>";
-       echo "<script type='text/javascript'> document.location = 'profile.php'; </script>";
+  echo "<script>alert('Profile updated successfully');</script>";
+  echo "<script type='text/javascript'> document.location = 'profile.php'; </script>";
 }
 }
 
@@ -68,9 +68,7 @@ while($result=mysqli_fetch_array($query))
                                        <th>Email</th>
                                        <td colspan="3"><?php echo $result['email'];?></td>
                                    </tr>
-
-
-                                        <tr>
+                                    <tr>
                                        <th>Reg. Date</th>
                                        <td colspan="3"><?php echo $result['posting_date'];?></td>
                                    </tr>

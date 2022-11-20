@@ -3,11 +3,11 @@ include_once('includes/config.php');
 if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
   } else{
-//Code for Updation 
- // for  password change   
+//Code for Updation
+ // for  password change
 if(isset($_POST['update']))
 {
-$oldpassword=$_POST['currentpassword']; 
+$oldpassword=$_POST['currentpassword'];
 $newpassword=$_POST['newpassword'];
 $sql=mysqli_query($con,"SELECT password FROM users where password='$oldpassword'");
 $num=mysqli_fetch_array($sql);
@@ -25,7 +25,7 @@ echo "<script type='text/javascript'> document.location = 'change-password.php';
 }
 }
 
-    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +60,7 @@ return true;
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        
+
 
                         <h1 class="mt-4">Change Password</h1>
                         <div class="card mb-4">
@@ -79,7 +79,7 @@ return true;
                                        <th>Confirm Password</th>
                                        <td colspan="3"><input class="form-control" id="confirmpassword" name="confirmpassword" type="password"    required /></td>
                                    </tr>
-                  
+
                                    <tr>
                                        <td colspan="4" style="text-align:center ;"><button type="submit" class="btn btn-primary btn-block" name="update">Change</button></td>
 
