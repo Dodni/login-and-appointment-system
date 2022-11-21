@@ -2,10 +2,10 @@
 -- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Nov 12. 18:22
--- Kiszolgáló verziója: 10.4.24-MariaDB
--- PHP verzió: 7.4.28
+-- Host: localhost
+-- Generation Time: Nov 21, 2022 at 04:38 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `loginsystem`
+-- Database: `loginsystem`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,7 +34,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- A tábla adatainak kiíratása `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
@@ -43,7 +43,7 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -57,43 +57,99 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- A tábla adatainak kiíratása `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`, `contactno`, `posting_date`) VALUES
-(13, 'Anuj', 'Kumar', 'phpgurukulteam@gmail.com', 'Test@123', '1234567890', '2021-08-09 18:30:00'),
+(17, 'test1', 'test1', 'test1@test.co', '2c9341ca4cf3d87b9e4eb905d6a3ec45', '1234321123', '2022-11-20 16:47:55');
+
+-- --------------------------------------------------------
 
 --
--- Indexek a kiírt táblákhoz
+-- Table structure for table `work`
+--
+
+CREATE TABLE `work` (
+  `workid` int(11) NOT NULL,
+  `workdate` date DEFAULT NULL,
+  `worktimestart` time DEFAULT NULL,
+  `appointmentfree` tinyint(1) NOT NULL DEFAULT 1,
+  `workinghour` int(11) NOT NULL DEFAULT 1,
+  `description` varchar(500) DEFAULT NULL,
+  `payed` tinyint(1) NOT NULL DEFAULT 0,
+  `studentid` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `work`
+--
+
+INSERT INTO `work` (`workid`, `workdate`, `worktimestart`, `appointmentfree`, `workinghour`, `description`, `payed`, `studentid`) VALUES
+(1, '2022-11-14', '10:00:00', 1, 1, 'My first training!', 0, NULL),
+(2, '2022-11-15', '13:00:00', 1, 1, 'I teach new tips and tricks that day.', 0, NULL),
+(3, '2022-11-16', '16:00:00', 1, 1, 'Broda', 0, NULL),
+(5, '2022-11-17', '14:00:00', 0, 1, 'I am busy.', 0, NULL),
+(6, '2022-11-21', '10:00:00', 0, 1, 'I let free today', 0, 15),
+(7, '2022-12-31', '13:00:00', 0, 1, 'I am free today for only one hour!', 1, 14),
+(8, '2022-11-20', '13:00:00', 1, 1, NULL, 1, NULL),
+(9, '2022-11-19', '16:00:00', 1, 1, '', 0, 15),
+(11, '2022-11-24', '19:16:00', 0, 1, 'First insert test from new from', 0, NULL),
+(12, '2022-11-25', '10:00:00', 1, 1, '', 0, NULL);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- A tábla indexei `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- A kiírt táblák AUTO_INCREMENT értéke
+-- Indexes for table `work`
+--
+ALTER TABLE `work`
+  ADD PRIMARY KEY (`workid`),
+  ADD KEY `studentid` (`studentid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT a táblához `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT a táblához `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `work`
+--
+ALTER TABLE `work`
+  MODIFY `workid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `work`
+--
+ALTER TABLE `work`
+  ADD CONSTRAINT `work_ibfk_1` FOREIGN KEY (`studentid`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

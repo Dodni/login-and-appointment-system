@@ -2,18 +2,18 @@
 
 //ONLINE
 /*
-  define('HOST', 'localhost');
-  define('DATABASE', 'evoluo_db');
-  define('USER', 'evoluo_db');
-  define('PASSWORD', 'AOJJRaHDuU9p');
+  define('DB_SERVER', 'localhost');
+  define('DB_NAME', 'evoluo_db');
+  define('DB_USER', 'evoluo_db');
+  define('DB_PASS', 'AOJJRaHDuU9p');
 */
 
-//XAMP
+//XAMPP
 /*
-define('HOST', 'localhost');
-  define('DATABASE', 'web2');
-  define('USER', 'root');
-  define('PASSWORD', '');
+ define('DB_SERVER','localhost');
+ define('DB_USER','root');
+ define('DB_PASS' ,'');
+ define('DB_NAME', 'loginsystem');
   */
 
 define('DB_SERVER','localhost');
